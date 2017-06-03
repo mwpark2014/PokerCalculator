@@ -10,7 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import com.example.pokercalculator.R
-import com.example.pokercalculator.model.Round
+import com.example.pokercalculator.controller.Round
 
 class MainActivity : AppCompatActivity() {
     //TODO: Add fragment? for ListView

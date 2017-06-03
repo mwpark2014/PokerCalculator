@@ -1,6 +1,9 @@
-package com.example.pokercalculator.model
+package com.example.pokercalculator.controller
 
 import android.util.Log
+import com.example.pokercalculator.model.Card
+import com.example.pokercalculator.model.Hand
+import com.example.pokercalculator.model.SharedHand
 
 /**
  * Created by Mason Park on 5/28/2017.
@@ -13,7 +16,7 @@ class Round(inputString: String?) {
     var mShared: SharedHand? = null
 
     init {
-        Log.i(Round.Companion.LOG_TAG, "Initiated with " + inputString)
+        Log.i(LOG_TAG, "Initiated with " + inputString)
         parseInput(inputString)
     }
 

@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         //This is the EditText view that is used for input string
-        val editTextBox = findViewById(R.id.inputTextField) as EditText;
-        editTextBox.setOnEditorActionListener {v, actionId, event ->
+        val editTextBox = findViewById(R.id.inputTextField) as EditText
+        editTextBox.setOnEditorActionListener {_, _, _ ->
             enterAction(editTextBox.getText().toString())}
 
         //This is the bottom right floating action button
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun enterAction(input: String):Boolean {
-        val round = Round(input);
+        val round = Round(input)
         val arrayString = round.mHands.map {value -> value.toString()}
         Log.d(LOG_TAG, arrayString.reduce {total, f -> total + " " + f})
         return true

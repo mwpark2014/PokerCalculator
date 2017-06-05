@@ -36,7 +36,7 @@ public class RecyclerViewFragment extends Fragment {
     private static final int DATASET_COUNT = 60;
 
     protected RecyclerView mRecyclerView;
-    protected CustomAdapter mAdapter;
+    protected HandAdapter mAdapter;
     protected LinearLayoutManager mLayoutManager;
     protected String[] mDataset;
 
@@ -62,8 +62,8 @@ public class RecyclerViewFragment extends Fragment {
         // elements are laid out.
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new CustomAdapter(mDataset);
-        // Set CustomAdapter as the adapter for RecyclerView.
+        mAdapter = new HandAdapter(mDataset);
+        // Set HandAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
 
         // Create Dividers for each list item

@@ -1,5 +1,6 @@
 package com.example.pokercalculator.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -11,29 +12,46 @@ import android.view.MenuItem
 import android.widget.EditText
 import com.example.pokercalculator.R
 import com.example.pokercalculator.controller.Round
+import android.view.inputmethod.InputMethodManager
+
+//TODO: Create Poker Card Selector
 
 class MainActivity : AppCompatActivity() {
-    //TODO: Add fragment? for ListView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //This is the top right toolbar for settings found in activity_main.xml
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
+        //This is the EditText view that is used for input string
         val editTextBox = findViewById(R.id.inputTextField) as EditText;
         editTextBox.setOnEditorActionListener {v, actionId, event ->
             enterAction(editTextBox.getText().toString())}
+
+        //This is the bottom right floating action button
         val fab = findViewById(R.id.fab) as FloatingActionButton
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            run {
+                val focus = this.currentFocus
+                if (focus != null) {
+                    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(focus.windowToken, 0)
+                }
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show()
+            }
         }
+        //TODO: Make it so virtual keyboard goes away when not in focus
+        //TODO: Make it so virtual keyboard does not autocorrect
+        //TODO: Create transition when typing in editfield
+        //TODO: Ensure no memory leaks when activities and fragments are killed
     }
 
     private fun enterAction(input: String):Boolean {
         val round = Round(input);
         val arrayString = round.mHands.map {value -> value.toString()}
-        Log.i(LOG_TAG, arrayString.reduce {total, f -> total + " " + f})
+        Log.d(LOG_TAG, arrayString.reduce {total, f -> total + " " + f})
         return true
     }
 

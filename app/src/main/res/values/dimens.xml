@@ -1,5 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="horizontal_page_margin">8dp</dimen>
-    <dimen name="vertical_page_margin">8dp</dimen>
+    <dimen name="horizontal_page_margin">16dp</dimen>
+    <dimen name="vertical_page_margin">16dp</dimen>
 </resources>

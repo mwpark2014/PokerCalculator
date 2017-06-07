@@ -1,8 +1,11 @@
-package com.example.pokercalculator.ui;
+package com.example.pokercalculator.controller;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.pokercalculator.ui.HelperFragment;
+import com.example.pokercalculator.ui.ReviewFragment;
 
 /**
  * Created by Mason on 6/5/2017.

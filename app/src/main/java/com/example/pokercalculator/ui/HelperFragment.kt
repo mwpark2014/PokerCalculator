@@ -13,7 +13,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
+//TODO: Create the Guide Fragment
 package com.example.pokercalculator.ui
 
 import android.content.Context
@@ -32,6 +32,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 
 import com.example.pokercalculator.R
+import com.example.pokercalculator.controller.HandAdapter
 import com.example.pokercalculator.controller.Round
 
 /**

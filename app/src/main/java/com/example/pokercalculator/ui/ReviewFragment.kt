@@ -16,7 +16,6 @@
 
 package com.example.pokercalculator.ui
 
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -33,6 +32,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 
 import com.example.pokercalculator.R
+import com.example.pokercalculator.controller.HandAdapter
 import com.example.pokercalculator.controller.Round
 
 /**
@@ -53,6 +53,7 @@ class ReviewFragment : Fragment() {
         initDataset()
     }
 
+    //TODO: organize into methods or paragraphs for readability
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.review_fragment, container, false)

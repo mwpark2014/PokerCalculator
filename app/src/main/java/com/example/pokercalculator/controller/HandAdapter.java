@@ -1,4 +1,4 @@
-package com.example.pokercalculator.ui;
+package com.example.pokercalculator.controller;
 /*
 * Copyright (C) 2014 The Android Open Source Project
 *
@@ -25,6 +25,7 @@ import com.example.pokercalculator.R;
 /**
  * Provide views to RecyclerView with data from mDataSet.
  */
+//TODO: Work on what to display at each list item
 public class HandAdapter extends RecyclerView.Adapter<HandAdapter.ViewHolder> {
     private static final String TAG = "HandAdapter";
 

@@ -1,6 +1,7 @@
 package com.example.pokercalculator.ui
 
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
@@ -16,11 +17,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // ViewPager and its adapters use support library
-        // fragments, so use getSupportFragmentManager.
-        val viewPagerAdapter = ViewPagerAdapter(getSupportFragmentManager());
+        // ViewPager allows swiping left and right to navigate to different fragments
+        val viewPagerAdapter = ViewPagerAdapter(getSupportFragmentManager(), this);
         val viewPager = findViewById(R.id.pager) as ViewPager;
         viewPager.setAdapter(viewPagerAdapter);
+
+        //Add tabs with TabLayout for top navigation
+        val tabLayout = findViewById(R.id.tab_layout) as TabLayout;
+        tabLayout.setupWithViewPager(viewPager);
+
+        //Set TabOnSelected Listener to facilitate clicking as well as swiping for nav
+//        tabLayout.addOnTabSelectedListener{
+//            tab -> viewPager.setCurrentItem(tab.getPosition())
+//        }
 
         //This is the top right toolbar for settings found in activity_main.xml
         val toolbar = findViewById(R.id.toolbar) as Toolbar

@@ -18,18 +18,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // ViewPager allows swiping left and right to navigate to different fragments
-        val viewPagerAdapter = ViewPagerAdapter(getSupportFragmentManager(), this);
-        val viewPager = findViewById(R.id.pager) as ViewPager;
-        viewPager.setAdapter(viewPagerAdapter);
+        val viewPagerAdapter = ViewPagerAdapter(getSupportFragmentManager(), this)
+        val viewPager = findViewById(R.id.pager) as ViewPager
+        viewPager.setAdapter(viewPagerAdapter)
 
         //Add tabs with TabLayout for top navigation
-        val tabLayout = findViewById(R.id.tab_layout) as TabLayout;
-        tabLayout.setupWithViewPager(viewPager);
+        val tabLayout = findViewById(R.id.tab_layout) as TabLayout
+        tabLayout.setupWithViewPager(viewPager)
 
         //Set TabOnSelected Listener to facilitate clicking as well as swiping for nav
-//        tabLayout.addOnTabSelectedListener{
-//            tab -> viewPager.setCurrentItem(tab.getPosition())
-//        }
+        tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                viewPager.setCurrentItem(tab.position)
+            }
+            override fun onTabReselected(tab: TabLayout.Tab) {
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+        })
 
         //This is the top right toolbar for settings found in activity_main.xml
         val toolbar = findViewById(R.id.toolbar) as Toolbar

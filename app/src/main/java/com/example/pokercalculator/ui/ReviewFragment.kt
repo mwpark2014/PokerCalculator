@@ -71,7 +71,8 @@ class ReviewFragment : Fragment() {
         mRecyclerView.adapter = mAdapter
 
         // Create Dividers for each list item
-        val dividerItemDecoration = DividerItemDecoration(mRecyclerView.context, mLayoutManager.orientation)
+        val dividerItemDecoration = DividerItemDecoration(mRecyclerView.context,
+                mLayoutManager.orientation)
         mRecyclerView.addItemDecoration(dividerItemDecoration)
 
         //This is the EditText view that is used for input string

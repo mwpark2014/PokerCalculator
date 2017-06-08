@@ -59,21 +59,7 @@ class ReviewFragment : Fragment() {
         val rootView = inflater!!.inflate(R.layout.review_fragment, container, false)
         rootView.tag = TAG
 
-        mRecyclerView = rootView.findViewById(R.id.recyclerView) as RecyclerView
-
-        // LinearLayoutManager is used here, this will layout the elements in a similar fashion
-        // to the way ListView would layout elements. The RecyclerView.LayoutManager defines how
-        // elements are laid out.
-        mLayoutManager = LinearLayoutManager(activity)
-        mRecyclerView.layoutManager = mLayoutManager
-        mAdapter = HandAdapter(mDataset)
-        // Set HandAdapter as the adapter for RecyclerView.
-        mRecyclerView.adapter = mAdapter
-
-        // Create Dividers for each list item
-        val dividerItemDecoration = DividerItemDecoration(mRecyclerView.context,
-                mLayoutManager.orientation)
-        mRecyclerView.addItemDecoration(dividerItemDecoration)
+        initRecyclerView(rootView)
 
         //This is the EditText view that is used for input string
         val editTextBox = rootView.findViewById(R.id.inputTextField) as EditText
@@ -106,8 +92,22 @@ class ReviewFragment : Fragment() {
         super.onSaveInstanceState(savedInstanceState)
     }
 
-    private fun initRecyclerView() {
+    private fun initRecyclerView(view: View) {
+        mRecyclerView = view.findViewById(R.id.recyclerView) as RecyclerView
 
+        // LinearLayoutManager is used here, this will layout the elements in a similar fashion
+        // to the way ListView would layout elements. The RecyclerView.LayoutManager defines how
+        // elements are laid out.
+        mLayoutManager = LinearLayoutManager(activity)
+        mRecyclerView.layoutManager = mLayoutManager
+        mAdapter = HandAdapter(mDataset)
+        // Set HandAdapter as the adapter for RecyclerView.
+        mRecyclerView.adapter = mAdapter
+
+        // Create Dividers for each list item
+        val dividerItemDecoration = DividerItemDecoration(mRecyclerView.context,
+                mLayoutManager.orientation)
+        mRecyclerView.addItemDecoration(dividerItemDecoration)
     }
 
     private fun enterAction(input: String):Boolean {
@@ -126,7 +126,7 @@ class ReviewFragment : Fragment() {
     }
     companion object{
         private val TAG = "ReviewFragment"
-        private val DATASET_COUNT = 60
+        private val DATASET_COUNT = 9
         @JvmStatic fun newInstance(text: String): ReviewFragment {
             val f = ReviewFragment()
             val b = Bundle()

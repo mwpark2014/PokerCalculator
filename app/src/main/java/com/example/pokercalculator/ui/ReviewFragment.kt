@@ -34,16 +34,17 @@ import android.widget.EditText
 import com.example.pokercalculator.R
 import com.example.pokercalculator.controller.HandAdapter
 import com.example.pokercalculator.controller.Round
+import com.example.pokercalculator.model.Hand
 
 /**
  * Demonstrates the use of [RecyclerView] with a [LinearLayoutManager]
  */
 class ReviewFragment : Fragment() {
 
-    lateinit protected var mRecyclerView: RecyclerView
-    lateinit protected var mAdapter: HandAdapter
-    lateinit protected var mLayoutManager: LinearLayoutManager
-    lateinit protected var mDataset: Array<String>
+    lateinit private var mRecyclerView: RecyclerView
+    lateinit private var mAdapter: HandAdapter
+    lateinit private var mLayoutManager: LinearLayoutManager
+    private var mRound: Round? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,10 +112,15 @@ class ReviewFragment : Fragment() {
     }
 
     private fun enterAction(input: String):Boolean {
-        val round = Round(input)
-        val arrayString = round.mHands.map {value -> value.toString()}
+        //Create new Round that represents game state
+        mRound = Round(input)
+        val arrayString = mRound.mHands.map {value -> value.toString()}
         Log.d(TAG, arrayString.reduce { total, f -> total + " " + f})
         return true
+    }
+
+    private fun updateAdapter() {
+
     }
 
     /**

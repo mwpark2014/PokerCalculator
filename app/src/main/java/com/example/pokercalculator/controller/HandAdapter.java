@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.pokercalculator.R;
+import com.example.pokercalculator.model.Hand;
 
 /**
  * Provide views to RecyclerView with data from mDataSet.
@@ -29,7 +30,7 @@ import com.example.pokercalculator.R;
 public class HandAdapter extends RecyclerView.Adapter<HandAdapter.ViewHolder> {
     private static final String TAG = "HandAdapter";
 
-    private String[] mDataSet;
+    private Hand[] mDataSet;
 
     /**
      * Provide a reference to the type of views that you are using (custom ViewHolder)
@@ -59,7 +60,7 @@ public class HandAdapter extends RecyclerView.Adapter<HandAdapter.ViewHolder> {
      *
      * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
      */
-    public HandAdapter(String[] dataSet) {
+    public HandAdapter(Hand[] dataSet) {
         mDataSet = dataSet;
     }
 
@@ -71,6 +72,12 @@ public class HandAdapter extends RecyclerView.Adapter<HandAdapter.ViewHolder> {
                 .inflate(R.layout.list_item, viewGroup, false);
 
         return new ViewHolder(v);
+    }
+
+    //Update the data, which is mDataset: Hand[]
+    public void swap(Hand[] newData) {
+        mDataSet = newData;
+        notifyDataSetChanged();
     }
 
     // Replace the contents of a view (invoked by the layout manager)

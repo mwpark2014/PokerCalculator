@@ -65,7 +65,7 @@ class HelperFragment : Fragment() {
         // elements are laid out.
         mLayoutManager = LinearLayoutManager(activity)
         mRecyclerView.layoutManager = mLayoutManager
-        mAdapter = HandAdapter(mDataset)
+        mAdapter = HandAdapter()
         // Set HandAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
 

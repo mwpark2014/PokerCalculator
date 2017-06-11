@@ -44,14 +44,10 @@ class ReviewFragment : Fragment() {
     lateinit private var mRecyclerView: RecyclerView
     lateinit private var mAdapter: HandAdapter
     lateinit private var mLayoutManager: LinearLayoutManager
-    private var mRound: Round? = null;
+    private var mRound: Round? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Initialize dataset, this data would usually come from a local content provider or
-        // remote server.
-        initDataset()
     }
 
     //TODO: organize into methods or paragraphs for readability
@@ -101,7 +97,7 @@ class ReviewFragment : Fragment() {
         // elements are laid out.
         mLayoutManager = LinearLayoutManager(activity)
         mRecyclerView.layoutManager = mLayoutManager
-        mAdapter = HandAdapter(mDataset)
+        mAdapter = HandAdapter()
         // Set HandAdapter as the adapter for RecyclerView.
         mRecyclerView.adapter = mAdapter
 
@@ -114,22 +110,18 @@ class ReviewFragment : Fragment() {
     private fun enterAction(input: String):Boolean {
         //Create new Round that represents game state
         mRound = Round(input)
-        val arrayString = mRound.mHands.map {value -> value.toString()}
-        Log.d(TAG, arrayString.reduce { total, f -> total + " " + f})
+        mRound?.let {
+            val arrayString = it.mHands.map { value -> value.toString() }
+            Log.d(TAG, arrayString.reduce { total, f -> total + " " + f })
+            updateAdapter(it)
+        }
         return true
     }
 
-    private fun updateAdapter() {
-
+    private fun updateAdapter(round: Round) {
+        mAdapter.swap(round.mHands)
     }
 
-    /**
-     * Generates Strings for RecyclerView's adapter. This data would usually come
-     * from a local content provider or remote server.
-     */
-    private fun initDataset() {
-        mDataset = Array(DATASET_COUNT, {i -> "This is element #" + i})
-    }
     companion object{
         private val TAG = "ReviewFragment"
         private val DATASET_COUNT = 9

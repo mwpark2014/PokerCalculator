@@ -15,14 +15,22 @@
  limitations under the License.
 -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/vertical_page_margin"
     android:layout_marginBottom="@dimen/vertical_page_margin"
     android:layout_marginLeft="@dimen/horizontal_page_margin"
     android:layout_marginRight="@dimen/horizontal_page_margin"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/fold_button"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
     <TextView
         android:id="@+id/textView"
@@ -30,4 +38,4 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         />
-</FrameLayout>
+</LinearLayout>

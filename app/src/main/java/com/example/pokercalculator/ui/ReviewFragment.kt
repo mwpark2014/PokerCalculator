@@ -44,7 +44,6 @@ class ReviewFragment : Fragment() {
     lateinit private var mRecyclerView: RecyclerView
     lateinit private var mAdapter: HandAdapter
     lateinit private var mLayoutManager: LinearLayoutManager
-    private var mRound: Round? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,8 +96,8 @@ class ReviewFragment : Fragment() {
         // elements are laid out.
         mLayoutManager = LinearLayoutManager(activity)
         mRecyclerView.layoutManager = mLayoutManager
-        mAdapter = HandAdapter()
         // Set HandAdapter as the adapter for RecyclerView.
+        mAdapter = HandAdapter()
         mRecyclerView.adapter = mAdapter
 
         // Create Dividers for each list item
@@ -109,17 +108,12 @@ class ReviewFragment : Fragment() {
 
     private fun enterAction(input: String):Boolean {
         //Create new Round that represents game state
-        mRound = Round(input)
-        mRound?.let {
-            val arrayString = it.mHands.map { value -> value.toString() }
-            Log.d(TAG, arrayString.reduce { total, f -> total + " " + f })
-            updateAdapter(it)
-        }
+        updateAdapter(Round(input))
         return true
     }
 
     private fun updateAdapter(round: Round) {
-        mAdapter.swap(round.mHands)
+        mAdapter.swap(round)
     }
 
     companion object{

@@ -59,8 +59,9 @@ class Round(inputString: String?) {
     //Capitalize string
     private fun sanitizeString(input: String?): String? {
         //TODO: Throw exception if invalid string
-        //TODO: Uppercase string
-        val output = input?.trim()
+        //Make letters all same case and remove white space
+        val output = input?.trim()?.toLowerCase()
+
         return output
     }
 

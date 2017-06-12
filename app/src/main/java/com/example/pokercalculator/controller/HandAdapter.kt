@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.pokercalculator.R
 import com.example.pokercalculator.model.Hand
+import com.example.pokercalculator.ui.ReviewFragment
 
 import java.util.ArrayList
 
@@ -64,25 +65,31 @@ class HandAdapter : RecyclerView.Adapter<HandAdapter.ViewHolder>() {
     }
 
     //Update the data, which is mDataset: Hand[]
-    fun swap(newData: ArrayList<Hand>) {
-        mDataSet = newData
+    fun swap(round: Round) {
+        mDataSet = round.mHands
         notifyDataSetChanged()
+    }
+
+    //Update the data, which is mDataset: Hand[]
+    fun removeItem(position: Int) {
+        notifyItemRemoved(position)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        Log.d(TAG, "Element $position set.")
-        //TODO: Display hands not text
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
-        //        viewHolder.getTextView().setText(mDataSet[position]);
+//        val arrayString = mDataSet?.map { value -> value.toString() }
+//        Log.d(TAG, arrayString?.reduce { total, f -> total + " " + f })
+
+        viewHolder.textView.setText(mDataSet?.let { it[position].toString() })
     }
+
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount(): Int {
         return mDataSet?.size ?: 0
     }
-
 
     companion object {
         private val TAG = "HandAdapter"

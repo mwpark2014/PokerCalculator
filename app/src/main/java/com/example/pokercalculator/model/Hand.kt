@@ -15,4 +15,8 @@ data class Hand(val cardOne: Card, val cardTwo: Card) : HandInterface {
     override fun getHand(): Array<Card>? {
         return cardArray;
     }
+
+    override fun toString(): String {
+        return cardOne.toString() + " " + cardTwo.toString()
+    }
 }
